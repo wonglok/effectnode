@@ -2,8 +2,11 @@ import React, { useRef } from 'react'
 import { useFrame } from '@react-three/fiber'
 
 export function effect({ mini, node }) {
+  node.in0.ready.then((v) => {
+    console.log('ready', v)
+  })
   node.in0.stream((v) => {
-    console.log(v)
+    console.log('stream', v)
   })
 
   mini.set('DefaultComponent', <MyCustomComponent></MyCustomComponent>)
