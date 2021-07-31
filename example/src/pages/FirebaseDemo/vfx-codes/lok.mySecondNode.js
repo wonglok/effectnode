@@ -13,7 +13,7 @@ function MyCustomComponent() {
   let ref = useRef()
   useFrame((st, dt) => {
     if (ref.current) {
-      ref.current.rotation.x += dt
+      ref.current.rotation.x += dt * 0.5
     }
   })
 

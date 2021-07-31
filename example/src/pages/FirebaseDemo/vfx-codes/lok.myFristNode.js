@@ -11,14 +11,18 @@ export async function effect({ mini, node }) {
   mounter.add(mesh)
 
   mini.onLoop((st, dt) => {
-    mesh.rotation.y += dt * 0.1
+    mesh.rotation.y += dt * 0.5
   })
 
   mini.onClean(() => {
     mounter.remove(mesh)
   })
 
-  node.out0.pulse({
-    myMessage: 'data 1234'
-  })
+  let i = 0
+  setInterval(() => {
+    i++
+    node.out0.pulse({
+      myMessage: 'data @' + i
+    })
+  }, 1000)
 }

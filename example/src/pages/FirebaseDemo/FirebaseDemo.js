@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from 'react'
 import { ENRuntime, getEffectNodeData } from 'effectnode'
 import { Canvas, useFrame } from '@react-three/fiber'
 
-export function ENRuntimeDemo() {
+export function FirebaseDemo() {
   return (
     <div style={{ width: '100%', height: '100%' }}>
       <Canvas style={{ width: '100%', height: '100%' }}>
@@ -22,12 +22,16 @@ export function EffectNodeInFiber() {
   useEffect(() => {
     getEffectNodeData({ firebaseConfig, graphID: `-MdBQtfGPXXPkl-NuEoW` }).then(
       (json) => {
-        graph.current = new ENRuntime({ json, codes: getCodes() })
-        graph.current.mini.get('DefaultComponent').then((v) => {
-          setCompos(v)
+        graph.current = new ENRuntime({
+          json: json,
+          codes: getCodes()
         })
       }
     )
+
+    graph.current.mini.get('DefaultComponent').then((v) => {
+      setCompos(v)
+    })
 
     return () => {
       graph.current.mini.clean()

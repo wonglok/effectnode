@@ -171,44 +171,43 @@ export async function getEffectNodeData({ firebaseConfig, graphID }) {
   )}/canvas/${graphID}.json`
 
   //
-  return getJSON({ url }).then(
-    (response) => {
-      let ans = false
-      for (let kn in response) {
-        if (!ans) {
-          ans = response[kn]
-        }
-      }
+  return getJSON({ url }).then(processRawData, () => {
+    return false
+  })
+}
 
-      //
-      if (ans) {
-        let connections = []
-
-        for (let kn in ans.connections) {
-          connections.push({
-            _fid: kn,
-            data: ans.connections[kn]
-          })
-        }
-
-        let nodes = []
-        for (let kn in ans.nodes) {
-          nodes.push({
-            _fid: kn,
-            data: ans.nodes[kn]
-          })
-        }
-
-        return {
-          connections,
-          nodes
-        }
-      } else {
-        return false
-      }
-    },
-    () => {
-      return false
+export const processRawData = (response) => {
+  let ans = false
+  for (let kn in response) {
+    if (!ans) {
+      ans = response[kn]
     }
-  )
+  }
+
+  //
+  if (ans) {
+    let connections = []
+
+    for (let kn in ans.connections) {
+      connections.push({
+        _fid: kn,
+        data: ans.connections[kn]
+      })
+    }
+
+    let nodes = []
+    for (let kn in ans.nodes) {
+      nodes.push({
+        _fid: kn,
+        data: ans.nodes[kn]
+      })
+    }
+
+    return {
+      connections,
+      nodes
+    }
+  } else {
+    return false
+  }
 }

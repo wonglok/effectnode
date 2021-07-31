@@ -1,6 +1,7 @@
 import React from 'react'
 import { BrowserRouter, Switch, Route } from 'react-router-dom'
-import { ENRuntimeDemo } from './pages/ENRuntimeDemo/ENRuntimeDemo'
+import { StaticDemo } from './pages/StaticDemo/StaticDemo'
+import { FirebaseDemo } from './pages/FirebaseDemo/FirebaseDemo'
 import { Landing } from './pages/Landing/Landing'
 
 // import 'effectnode/dist/index.css'
@@ -9,8 +10,12 @@ const App = () => {
   return (
     <BrowserRouter>
       <Switch>
-        <Route path='/ENRuntimeDemo'>
-          <ENRuntimeDemo />
+        <Route path='/StaticDemo'>
+          <StaticDemo />
+        </Route>
+
+        <Route path='/FirebaseDemo'>
+          <FirebaseDemo />
         </Route>
 
         <Route path='/'>

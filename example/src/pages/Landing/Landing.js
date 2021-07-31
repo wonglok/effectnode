@@ -3,7 +3,8 @@ import { Link } from 'react-router-dom'
 export function Landing() {
   return (
     <div>
-      <Link to='/ENRuntimeDemo'>ENRuntimeDemo</Link>
+      <Link to='/StaticDemo'>StaticDemo</Link>
+      <Link to='/FirebaseDemo'>FirebaseDemo</Link>
     </div>
   )
 }
