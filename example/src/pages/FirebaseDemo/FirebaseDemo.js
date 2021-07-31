@@ -26,16 +26,18 @@ export function EffectNodeInFiber() {
           json: json,
           codes: getCodes()
         })
+
+        graph.current.mini.get('DefaultComponent').then((v) => {
+          setCompos(v)
+        })
       }
     )
 
-    graph.current.mini.get('DefaultComponent').then((v) => {
-      setCompos(v)
-    })
-
     return () => {
-      graph.current.mini.clean()
-      graph.current.clean()
+      if (graph.current) {
+        graph.current.mini.clean()
+        graph.current.clean()
+      }
     }
   }, [])
 

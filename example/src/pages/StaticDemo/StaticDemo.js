@@ -30,8 +30,10 @@ export function EffectNodeInFiber() {
     })
 
     return () => {
-      graph.current.mini.clean()
-      graph.current.clean()
+      if (graph.current) {
+        graph.current.mini.clean()
+        graph.current.clean()
+      }
     }
   }, [])
 
