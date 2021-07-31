@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from 'react'
 import { ENRuntime, processRawData } from 'effectnode'
 import { Canvas, useFrame } from '@react-three/fiber'
 import { getRawFirebaseData } from './getRawFirebaseData'
+import { CodeButton } from '../../ui/CodeButton'
 
 export function StaticDemo() {
   return (
@@ -9,6 +10,7 @@ export function StaticDemo() {
       <Canvas style={{ width: '100%', height: '100%' }}>
         <EffectNodeInFiber></EffectNodeInFiber>
       </Canvas>
+      <CodeButton url='https://github.com/wonglok/effectnode/blob/master/example/src/pages/StaticDemo/StaticDemo.js'></CodeButton>
     </div>
   )
 }

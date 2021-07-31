@@ -18,9 +18,11 @@ function MyCustomComponent() {
   })
 
   return (
-    <mesh ref={ref}>
-      <boxBufferGeometry args={[3, 3, 3, 2, 2, 2]}></boxBufferGeometry>
-      <meshBasicMaterial color={'blue'} wireframe={true}></meshBasicMaterial>
-    </mesh>
+    <group>
+      <mesh ref={ref}>
+        <boxBufferGeometry args={[3, 3, 3, 2, 2, 2]}></boxBufferGeometry>
+        <meshBasicMaterial color={'blue'} wireframe={true}></meshBasicMaterial>
+      </mesh>
+    </group>
   )
 }

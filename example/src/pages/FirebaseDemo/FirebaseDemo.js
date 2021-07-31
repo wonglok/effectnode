@@ -1,13 +1,16 @@
 import React, { useEffect, useRef, useState } from 'react'
 import { ENRuntime, getEffectNodeData } from 'effectnode'
 import { Canvas, useFrame } from '@react-three/fiber'
-
+import { CodeButton } from '../../ui/CodeButton'
 export function FirebaseDemo() {
   return (
     <div style={{ width: '100%', height: '100%' }}>
       <Canvas style={{ width: '100%', height: '100%' }}>
         <EffectNodeInFiber></EffectNodeInFiber>
       </Canvas>
+      <CodeButton
+        url={`https://github.com/wonglok/effectnode/blob/master/example/src/pages/FirebaseDemo/FirebaseDemo.js`}
+      ></CodeButton>
     </div>
   )
 }
