@@ -10,11 +10,11 @@ const App = () => {
   return (
     <BrowserRouter>
       <Switch>
-        <Route path='/StaticDemo'>
+        <Route path='/effectnode/StaticDemo'>
           <StaticDemo />
         </Route>
 
-        <Route path='/FirebaseDemo'>
+        <Route path='/effectnode/FirebaseDemo'>
           <FirebaseDemo />
         </Route>
 

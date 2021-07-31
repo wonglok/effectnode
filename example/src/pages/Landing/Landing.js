@@ -6,10 +6,10 @@ export function Landing() {
       Demos of EffectNode Runtime:
       <ul>
         <li>
-          <Link to='/StaticDemo'>StaticDemo</Link>
+          <Link to='/effectnode/StaticDemo'>StaticDemo</Link>
         </li>
         <li>
-          <Link to='/FirebaseDemo'>FirebaseDemo</Link>
+          <Link to='/effectnode/FirebaseDemo'>FirebaseDemo</Link>
         </li>
       </ul>
     </div>
