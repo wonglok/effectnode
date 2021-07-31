@@ -3,6 +3,7 @@ import { ENRuntime, processRawData } from 'effectnode'
 import { Canvas, useFrame } from '@react-three/fiber'
 import { getRawFirebaseData } from './getRawFirebaseData'
 import { CodeButton } from '../../ui/CodeButton'
+import { BackButton } from '../../ui/BackButton'
 
 export function StaticDemo() {
   return (
@@ -11,6 +12,7 @@ export function StaticDemo() {
         <EffectNodeInFiber></EffectNodeInFiber>
       </Canvas>
       <CodeButton url='https://github.com/wonglok/effectnode/blob/master/example/src/pages/StaticDemo/StaticDemo.js'></CodeButton>
+      <BackButton></BackButton>
     </div>
   )
 }

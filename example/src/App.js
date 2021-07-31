@@ -1,5 +1,5 @@
 import React from 'react'
-import { BrowserRouter, Switch, Route } from 'react-router-dom'
+import { HashRouter, Switch, Route } from 'react-router-dom'
 import { StaticDemo } from './pages/StaticDemo/StaticDemo'
 import { FirebaseDemo } from './pages/FirebaseDemo/FirebaseDemo'
 import { Landing } from './pages/Landing/Landing'
@@ -8,7 +8,7 @@ import { Landing } from './pages/Landing/Landing'
 
 const App = () => {
   return (
-    <BrowserRouter>
+    <HashRouter>
       <Switch>
         <Route path='/effectnode/StaticDemo'>
           <StaticDemo />
@@ -22,7 +22,7 @@ const App = () => {
           <Landing />
         </Route>
       </Switch>
-    </BrowserRouter>
+    </HashRouter>
   )
 }
 

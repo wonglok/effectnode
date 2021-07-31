@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from 'react'
 import { ENRuntime, getEffectNodeData } from 'effectnode'
 import { Canvas, useFrame } from '@react-three/fiber'
 import { CodeButton } from '../../ui/CodeButton'
+import { BackButton } from '../../ui/BackButton'
 export function FirebaseDemo() {
   return (
     <div style={{ width: '100%', height: '100%' }}>
@@ -11,6 +12,7 @@ export function FirebaseDemo() {
       <CodeButton
         url={`https://github.com/wonglok/effectnode/blob/master/example/src/pages/FirebaseDemo/FirebaseDemo.js`}
       ></CodeButton>
+      <BackButton></BackButton>
     </div>
   )
 }
