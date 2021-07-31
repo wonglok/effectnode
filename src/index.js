@@ -1,6 +1,11 @@
-import React from 'react'
-import styles from './styles.module.css'
+//
+// runtime
+import { ENRuntime, getEffectNodeData } from './runtime/ENRuntime'
+import { ENMini } from './runtime/ENMini'
 
-export const ExampleComponent = ({ text }) => {
-  return <div className={styles.test}>Example Component: {text}</div>
+export {
+  // utils
+  getEffectNodeData,
+  ENRuntime,
+  ENMini
 }
