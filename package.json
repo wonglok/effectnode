@@ -23,7 +23,8 @@
     "test:unit": "cross-env CI=1 react-scripts test --env=jsdom",
     "test:watch": "react-scripts test --env=jsdom",
     "disabed_predeploy": "cd example && yarn install && yarn run build",
-    "disabed_deploy": "gh-pages -d example/build"
+    "disabed_deploy": "gh-pages -d example/build",
+    "lt": "ngrok http 3000 --subdomain wonglok --region ap"
   },
   "peerDependencies": {
     "react": "^16.0.0"

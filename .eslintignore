@@ -1,5 +1,3 @@
-build/
-dist/
+.next
+dist
 node_modules/
-.snapshots/
-*.min.js
