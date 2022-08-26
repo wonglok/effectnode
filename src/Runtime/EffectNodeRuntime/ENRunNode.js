@@ -1,11 +1,12 @@
 import { EffectNodeObject } from '../EffectNodeObject/EffectNodeObject'
 
-export function ENRunNode({ glbObject, node, disabledNodes }) {
+export function ENRunNode({ codes, glbObject, node, disabledNodes }) {
   return (
     <>
       {node.userData?.effectNode && (
         <EffectNodeObject
           key={node.uuid}
+          codes={codes}
           glbObject={glbObject}
           item={node}
           disabledNodes={disabledNodes}
@@ -15,7 +16,7 @@ export function ENRunNode({ glbObject, node, disabledNodes }) {
 
       {/*  */}
       {node.children.map((it) => {
-        return <ENRunNode key={it.uuid} node={it}></ENRunNode>
+        return <ENRunNode codes={codes} key={it.uuid} node={it}></ENRunNode>
       })}
     </>
   )

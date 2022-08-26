@@ -1,13 +1,12 @@
 import { Suspense, useEffect, useState } from 'react'
 import { ENRunNode } from './ENRunNode'
 import { signGLB } from '@/utils/sign-glb'
-import { StandardLibrary } from '../../../output'
 
 //
 export function EffectNodeRuntime({
   glb,
   originalGLB,
-  codes = StandardLibrary.version0,
+  codes = [],
   disabledNodes = ['effect-composer', '.pass.', 'global.'],
 }) {
   // let ens = useFilterEffectNode({ glbObject })
@@ -76,6 +75,7 @@ export function EffectNodeRuntime({
           disabledNodes={disabledNodes}
           node={glb.scene}
           glbObject={glb}
+          codes={codes}
         ></ENRunNode>
       </Suspense>
       {/* <EffectNodeObject></EffectNodeObject> */}

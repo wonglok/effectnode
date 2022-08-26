@@ -1,14 +1,23 @@
-import { Canvas } from '@react-three/fiber'
+import { Canvas, useThree } from '@react-three/fiber'
 import { Suspense } from 'react'
-import { EffectNodeRuntime, StandardLibrary } from '@/index'
-import { Environment, useGLTF } from '@react-three/drei'
+import { Environment, Preload, useGLTF } from '@react-three/drei'
+import { sRGBEncoding } from 'three140'
+import * as EN from 'effectnode'
 
 export default function Render() {
   return (
     <div className='w-full h-full'>
-      <Canvas>
+      <Canvas
+        onCreated={(st) => {
+          st.gl.physicallyCorrectLights = true
+          st.gl.outputEncoding = sRGBEncoding
+        }}
+      >
         <Suspense fallback={null}>
+          <Preload all></Preload>
           <Content></Content>
+          <Environment background preset='city'></Environment>
+          <CameraConfig></CameraConfig>
         </Suspense>
       </Canvas>
     </div>
@@ -18,15 +27,19 @@ export default function Render() {
 //
 
 function Content() {
-  let codes = [...StandardLibrary.v0]
   let glb = useGLTF(`/glb/landing-effect.glb`)
+  let codes = EN.EffectNodes.AllNodes
   return (
     <group>
-      <Environment preset='city'></Environment>
       <primitive object={glb.scene}></primitive>
-      <EffectNodeRuntime glb={glb} codes={codes}></EffectNodeRuntime>
+      <EN.EffectNodeRuntime glb={glb} codes={codes}></EN.EffectNodeRuntime>
     </group>
   )
 }
 
-//
+function CameraConfig() {
+  let camera = useThree((s) => s.camera)
+  camera.position.z = 10
+  camera.position.y = 5
+  return null
+}

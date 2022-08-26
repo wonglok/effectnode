@@ -1,7 +1,7 @@
 let path = require('path')
 
 function getV0() {
-  let r = require.context('@/src/EffectNodes/', true, /\.en\.js$/, 'lazy')
+  let r = require.context('./', true, /\.en\.js$/, 'lazy')
 
   function importAll(r) {
     let arr = []
@@ -26,8 +26,8 @@ function getV0() {
 
 const v0 = getV0()
 
-const all = [...v0]
-export { v0, all }
+const AllNodes = [...v0]
+export { v0, AllNodes }
 
 //
 //
