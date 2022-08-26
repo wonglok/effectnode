@@ -1,6 +1,7 @@
 import { Canvas } from '@react-three/fiber'
 import { Suspense } from 'react'
-import { EffectNode } from '@/index'
+import { EffectNodeRuntime, StandardLibrary } from '@/index'
+import { Environment, useGLTF } from '@react-three/drei'
 
 export default function Render() {
   return (
@@ -14,13 +15,18 @@ export default function Render() {
   )
 }
 
+//
+
 function Content() {
+  let codes = [...StandardLibrary.v0]
+  let glb = useGLTF(`/glb/landing-effect.glb`)
   return (
     <group>
-      <EffectNode></EffectNode>
+      <Environment preset='city'></Environment>
+      <primitive object={glb.scene}></primitive>
+      <EffectNodeRuntime glb={glb} codes={codes}></EffectNodeRuntime>
     </group>
   )
 }
 
-//
 //

@@ -84,4 +84,4 @@ if (process.env.EXPORT !== 'true') {
 
 module.exports = nextConfig
 
-// module.exports.distDir = 'build'
+module.exports.distDir = 'build'

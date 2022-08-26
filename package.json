@@ -63,7 +63,7 @@
     "tailwindcss": "^3.1.8",
     "three": "^0.143.0",
     "three-stdlib": "^2.12.1",
-    "three143": "npm:three@^0.143.0",
+    "three140": "npm:three@^0.140.0",
     "url-loader": "^4.1.1",
     "zustand": "^4.0.0-rc.1"
   },
@@ -71,10 +71,11 @@
     "output"
   ],
   "dependencies": {
-    "effectnode": "link:.",
     "@react-three/drei": "^9.23.8",
     "@react-three/fiber": "^8.6.0",
     "@react-three/postprocessing": "^2.6.2",
+    "effectnode": "link:.",
+    "md5": "^2.3.0",
     "next": "^12.2.5",
     "next-compose-plugins": "^2.2.1",
     "nextjs": "^0.0.3"
