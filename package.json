@@ -5,8 +5,8 @@
   "author": "wonglok",
   "license": "MIT",
   "repository": "wonglok/effectnode",
-  "main": "dist/index.js",
-  "module": "dist/index.modern.js",
+  "main": "output/index.js",
+  "module": "output/index.modern.js",
   "source": "src/index.js",
   "engines": {
     "node": ">=16"
@@ -68,9 +68,10 @@
     "zustand": "^4.0.0-rc.1"
   },
   "files": [
-    "dist"
+    "output"
   ],
   "dependencies": {
+    "effectnode": "link:.",
     "@react-three/drei": "^9.23.8",
     "@react-three/fiber": "^8.6.0",
     "@react-three/postprocessing": "^2.6.2",
