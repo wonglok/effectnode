@@ -7,7 +7,7 @@ import {
   MeshPhysicalMaterial,
   Texture,
   TextureLoader,
-} from 'three140'
+} from 'three'
 // import { Bloom, EffectComposer, Noise } from '@react-three/postprocessing'
 //
 let getDefinitions = ({ nodeID }) => {

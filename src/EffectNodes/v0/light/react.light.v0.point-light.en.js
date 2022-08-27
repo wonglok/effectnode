@@ -9,9 +9,9 @@ import {
   MeshPhysicalMaterial,
   Texture,
   TextureLoader,
-} from 'three140'
-import { DRACOLoader } from 'three140/examples/jsm/loaders/DRACOLoader'
-import { GLTFLoader } from 'three140/examples/jsm/loaders/GLTFLoader'
+} from 'three'
+import { DRACOLoader } from 'three/examples/jsm/loaders/DRACOLoader'
+import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader'
 // import { Bloom, EffectComposer, Noise } from '@react-three/postprocessing'
 
 export async function nodeData({ defaultData, nodeID }) {

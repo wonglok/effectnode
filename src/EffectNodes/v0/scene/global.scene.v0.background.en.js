@@ -4,8 +4,8 @@ import {
   EquirectangularReflectionMapping,
   sRGBEncoding,
   TextureLoader,
-} from 'three140'
-import { RGBELoader } from 'three140/examples/jsm/loaders/RGBELoader'
+} from 'three'
+import { RGBELoader } from 'three/examples/jsm/loaders/RGBELoader'
 
 let props = {
   type: 'hdr', // color, hdr, texture

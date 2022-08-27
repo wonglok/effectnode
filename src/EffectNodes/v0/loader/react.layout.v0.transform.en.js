@@ -1,7 +1,7 @@
 import { getID } from '../../../utils/get-id'
 import { createPortal } from '@react-three/fiber'
 import { useEffect, useRef, useState } from 'react'
-import { Object3D } from 'three140'
+import { Object3D } from 'three'
 
 //
 

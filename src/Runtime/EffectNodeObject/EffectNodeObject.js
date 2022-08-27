@@ -1,6 +1,6 @@
 import { useFrame, useThree } from '@react-three/fiber'
 import { useEffect, useState } from 'react'
-import { Object3D } from 'three140'
+import { Object3D } from 'three'
 import { Core } from '../Core/Core'
 import { EffectNodeObjectLink } from './EffectNodeObjectLink'
 import { EffectNodeObjectNode } from './EffectNodeObjectNode'

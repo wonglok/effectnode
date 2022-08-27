@@ -1,7 +1,7 @@
 import { Canvas, useThree } from '@react-three/fiber'
 import { Suspense } from 'react'
 import { Environment, Preload, useGLTF } from '@react-three/drei'
-import { sRGBEncoding } from 'three140'
+import { sRGBEncoding } from 'three'
 import * as EN from '../src'
 
 export default function Render() {

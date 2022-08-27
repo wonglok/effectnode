@@ -1,7 +1,7 @@
 import { EffectNodeRuntime } from '../../../Runtime/EffectNodeRuntime/EffectNodeRuntime'
 import { useEffect, useState } from 'react'
-import { DRACOLoader } from 'three140/examples/jsm/loaders/DRACOLoader'
-import { GLTFLoader } from 'three140/examples/jsm/loaders/GLTFLoader'
+import { DRACOLoader } from 'three/examples/jsm/loaders/DRACOLoader'
+import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader'
 // import { Bloom, EffectComposer, Noise } from '@react-three/postprocessing'
 import { getID } from '../../../utils/get-id.js'
 export async function nodeData({ defaultData, nodeID }) {

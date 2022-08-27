@@ -71,7 +71,7 @@
     "dist"
   ],
   "dependencies": {
-    "three": "^0.143.0",
+    "three": "^0.140.0",
     "three140": "npm:three@^0.140.0",
     "@react-three/drei": "^9.23.8",
     "@react-three/fiber": "^8.6.0",
