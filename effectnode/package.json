@@ -1,5 +1,20 @@
 {
   "name": "effectnode",
   "version": "1.6.0",
-  "dependencies": {}
+  "type": "module",
+  "source": "src/effectnode.js",
+  "exports": {
+    "require": "./dist/effectnode.cjs",
+    "default": "./dist/effectnode.modern.js"
+  },
+  "main": "./dist/effectnode.cjs",
+  "module": "./dist/effectnode.module.js",
+  "unpkg": "./dist/effectnode.umd.js",
+  "scripts": {
+    "build": "microbundle",
+    "dev": "microbundle watch"
+  },
+  "devDependencies": {
+    "microbundle": "^0.15.1"
+  }
 }

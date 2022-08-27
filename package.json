@@ -3,5 +3,13 @@
   "workspaces": [
     "effectnode",
     "effectnode-example"
-  ]
+  ],
+  "scripts": {
+    "dev": "concurrently \"npm run dev1\" \"npm run dev2\"",
+    "dev1": "cd effectnode-example; npm run dev",
+    "dev2": "cd effectnode; npm run dev"
+  },
+  "dependencies": {
+    "concurrently": "^7.3.0"
+  }
 }
