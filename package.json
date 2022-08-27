@@ -1,6 +1,6 @@
 {
   "name": "effectnode",
-  "version": "1.5.11",
+  "version": "1.5.12",
   "description": "effectnode for react",
   "author": "wonglok",
   "license": "MIT",
@@ -23,7 +23,7 @@
     "test:unit": "cross-env CI=1 react-scripts test --env=jsdom",
     "test:watch": "react-scripts test --env=jsdom",
     "pub": "npm version patch --force && npm publish",
-    "release": "npm run build-lib; npm run pub;",
+    "deploy": "npm run build-lib; npm run pub;",
     "disabed_predeploy": "cd example && yarn install && yarn run build",
     "disabed_deploy": "gh-pages -d example/build",
     "lt": "ngrok http 3000 --subdomain wonglok --region ap"
