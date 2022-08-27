@@ -22,8 +22,8 @@
     "test:lint": "eslint .",
     "test:unit": "cross-env CI=1 react-scripts test --env=jsdom",
     "test:watch": "react-scripts test --env=jsdom",
-    "pub": "npm version patch --force && npm publish",
-    "deploy": "npm run build-lib; npm run pub;",
+    "bump": "npm version patch --force",
+    "uploadnpm": "npm publish",
     "disabed_predeploy": "cd example && yarn install && yarn run build",
     "disabed_deploy": "gh-pages -d example/build",
     "lt": "ngrok http 3000 --subdomain wonglok --region ap"
