@@ -1,6 +1,6 @@
 {
   "name": "effectnode",
-  "version": "1.5.12",
+  "version": "1.5.13",
   "description": "effectnode for react",
   "author": "wonglok",
   "license": "MIT",
@@ -8,6 +8,9 @@
   "main": "dist/index.js",
   "module": "dist/index.modern.js",
   "source": "src/index.js",
+  "output": {
+    "dir": "./dist/"
+  },
   "engines": {
     "node": ">=16"
   },
@@ -75,7 +78,7 @@
     "three140": "npm:three@^0.140.0",
     "@react-three/drei": "^9.23.8",
     "@react-three/fiber": "^8.6.0",
-    "@react-three/postprocessing": "^2.6.2",
+    "@react-three/postprocessing": "^2.6.1",
     "md5": "^2.3.0",
     "next": "^12.2.5",
     "next-compose-plugins": "^2.2.1",
