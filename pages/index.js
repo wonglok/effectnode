@@ -24,8 +24,6 @@ export default function Render() {
   )
 }
 
-//
-
 function Content() {
   let glb = useGLTF(`/glb/landing-effect.glb`)
   let codes = EN.EffectNodes.AllNodes
