@@ -2,7 +2,7 @@
   "name": "effectnode",
   "version": "1.6.0",
   "type": "module",
-  "source": "src/effectnode.js",
+  "source": "src/effectnode.jsx",
   "exports": {
     "require": "./dist/effectnode.cjs",
     "default": "./dist/effectnode.modern.js"
@@ -11,10 +11,10 @@
   "module": "./dist/effectnode.module.js",
   "unpkg": "./dist/effectnode.umd.js",
   "scripts": {
-    "build": "microbundle",
-    "dev": "microbundle watch"
+    "build": " microbundle --jsx React.createElement --jsxFragment React.Fragment --jsxImportSource react",
+    "dev": " microbundle watch --jsx React.createElement --jsxFragment React.Fragment --jsxImportSource react"
   },
   "devDependencies": {
-    "microbundle": "^0.15.1"
+    "microbundle": "*"
   }
 }
