@@ -3,6 +3,7 @@ import { Suspense } from 'react'
 import { Environment, Preload, useGLTF } from '@react-three/drei'
 import { sRGBEncoding } from 'three'
 import * as EN from '../src'
+import { AllNodes } from '../src/vfx-nodes'
 
 export default function Render() {
   return (
@@ -26,7 +27,7 @@ export default function Render() {
 
 function Content() {
   let glb = useGLTF(`/glb/landing-effect.glb`)
-  let codes = EN.EffectNodes.AllNodes
+  let codes = AllNodes
   return (
     <group>
       <primitive object={glb.scene}></primitive>
