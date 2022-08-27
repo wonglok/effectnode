@@ -1,4 +1,4 @@
-import { getID } from '@/utils/get-id'
+import { getID } from '../../../utils/get-id'
 import { createPortal } from '@react-three/fiber'
 import md5 from 'md5'
 import { useEffect, useRef } from 'react'

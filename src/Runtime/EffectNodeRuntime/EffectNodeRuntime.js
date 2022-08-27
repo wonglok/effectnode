@@ -1,6 +1,6 @@
 import { Suspense, useEffect, useState } from 'react'
 import { ENRunNode } from './ENRunNode'
-import { signGLB } from '@/utils/sign-glb'
+import { signGLB } from '../../utils/sign-glb'
 
 //
 export function EffectNodeRuntime({

@@ -1,12 +1,12 @@
 import { useFrame, useThree } from '@react-three/fiber'
 import { useEffect, useState } from 'react'
 import { Object3D } from 'three140'
-import { Core } from '@/Runtime/Core/Core'
+import { Core } from '../Core/Core'
 import { EffectNodeObjectLink } from './EffectNodeObjectLink'
 import { EffectNodeObjectNode } from './EffectNodeObjectNode'
 import { ENTJCore } from '../Core/ENTJCore'
-import { EventEmitter } from '@/Runtime/Core/EventEmitter'
-import { getID } from 'src/utils/get-id'
+import { EventEmitter } from '../Core/EventEmitter'
+import { getID } from '../../utils/get-id'
 export function EffectNodeObject({
   glbObject,
   item,

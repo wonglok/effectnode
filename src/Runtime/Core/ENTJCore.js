@@ -1,4 +1,4 @@
-import { getID } from '@/utils/get-id'
+import { getID } from '../../utils/get-id'
 
 class ENTJCore {
   constructor({

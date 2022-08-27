@@ -1,4 +1,4 @@
-import { getID } from '@/utils/get-id'
+import { getID } from '../../../utils/get-id'
 import { Scanline } from '@react-three/postprocessing'
 
 let props = {

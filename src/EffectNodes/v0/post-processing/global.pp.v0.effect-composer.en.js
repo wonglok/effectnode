@@ -1,4 +1,4 @@
-import { getID } from '@/utils/get-id'
+import { getID } from '../../../utils/get-id'
 import { EffectComposer } from '@react-three/postprocessing'
 
 export async function nodeData({ defaultData, nodeID }) {

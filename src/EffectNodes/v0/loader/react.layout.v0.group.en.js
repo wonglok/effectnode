@@ -1,6 +1,4 @@
-import { getID } from '@/utils/get-id'
-import { createPortal } from '@react-three/fiber'
-//
+import { getID } from '../../../utils/get-id'
 
 export async function nodeData({ defaultData, nodeID }) {
   return {

@@ -1,4 +1,4 @@
-import { getID } from '@/utils/get-id'
+import { getID } from '../../../utils/get-id'
 import { Sepia } from '@react-three/postprocessing'
 
 let props = {

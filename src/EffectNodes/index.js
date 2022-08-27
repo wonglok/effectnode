@@ -14,7 +14,7 @@ function getV0() {
         title: filename,
         key,
         path: `./${path.basename(key)}`,
-        loader: () => r(key),
+        loader: async () => r(key),
       })
     })
 
