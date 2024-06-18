@@ -2,6 +2,7 @@ import * as React from 'react'
 import { BeginBar } from '../BeginBar/BeginBar'
 import { BeginMenu } from '../BeginBar/BeginMenu'
 import { ThankYouList } from '../BeginBar/ThankYouList'
+import { AppWindows } from '../AppWindows/AppWindows'
 export function EditorApp({ useStore }) {
     return (
         <div className='w-full h-full '>
@@ -19,6 +20,7 @@ export function EditorApp({ useStore }) {
                 }}
             >
                 <div className='w-full h-full relative'>
+                    <AppWindows></AppWindows>
                     <BeginMenu useStore={useStore}></BeginMenu>
                     <ThankYouList useStore={useStore}></ThankYouList>
                 </div>

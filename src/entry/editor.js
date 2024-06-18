@@ -30,9 +30,9 @@ export class Editor {
         this.domElement.classList.add('effectnode-app-container')
         this.store = create((set, get) => {
             return {
-                offlines: ['apps'],
                 apps: [],
-                activatePop: '',
+                activeProject: false,
+                overlayPop: 'thankyou',
                 self,
                 set,
                 get,

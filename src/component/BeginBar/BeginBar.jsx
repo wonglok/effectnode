@@ -5,7 +5,7 @@ import icon from './img/effectnode-icon.svg'
 export function BeginBar({ useStore }) {
     // let wins = useStore((r) => r.wins)
     let apps = useStore((r) => r.apps)
-    let activatePop = useStore((r) => r.activatePop)
+    let overlayPop = useStore((r) => r.overlayPop)
     return (
         <>
             <div className='w-full h-full flex items-center justify-between text-sm'>
@@ -17,12 +17,12 @@ export function BeginBar({ useStore }) {
                 <div className='flex justify-start'>
                     <div
                         onClick={() => {
-                            if (activatePop === 'menu') {
-                                useStore.setState({ activatePop: '' })
-                            } else if (activatePop) {
-                                useStore.setState({ activatePop: 'menu' })
+                            if (overlayPop === 'menu') {
+                                useStore.setState({ overlayPop: '' })
+                            } else if (overlayPop) {
+                                useStore.setState({ overlayPop: 'menu' })
                             } else {
-                                useStore.setState({ activatePop: 'menu' })
+                                useStore.setState({ overlayPop: 'menu' })
                             }
                         }}
                         className='bg-white rounded-full overflow-hidden h-9 m-1 px-4 flex items-center justify-center cursor-pointer'
@@ -45,12 +45,12 @@ export function BeginBar({ useStore }) {
                             className='text-right underline cursor-pointer'
                             onClick={() => {
                                 //
-                                if (activatePop === 'credits') {
-                                    useStore.setState({ activatePop: '' })
-                                } else if (activatePop) {
-                                    useStore.setState({ activatePop: 'credits' })
+                                if (overlayPop === 'credits') {
+                                    useStore.setState({ overlayPop: '' })
+                                } else if (overlayPop) {
+                                    useStore.setState({ overlayPop: 'credits' })
                                 } else {
-                                    useStore.setState({ activatePop: 'credits' })
+                                    useStore.setState({ overlayPop: 'credits' })
                                 }
 
                                 //
