@@ -1,9 +1,9 @@
-const TerserPlugin = require("terser-webpack-plugin");
+// const TerserPlugin = require("terser-webpack-plugin");
 const { WebpackManifestPlugin } = require("webpack-manifest-plugin");
 const path = require("path");
 // const webpack = require("webpack");
 
-const configWebpack = {
+const webpackConfiguration = {
     entry: {
         runner: "./src/entry/runner.js",
         editor: "./src/entry/editor.js",
@@ -72,7 +72,7 @@ const configWebpack = {
     },
 };
 
-configWebpack.module.rules.push({
+webpackConfiguration.module.rules.push({
     test: /\.(glb|gltf|hdr|exr|fbx)$/,
     // exclude: config.exclude,
     use: [
@@ -87,10 +87,10 @@ configWebpack.module.rules.push({
 })
 
 // shader support
-configWebpack.module.rules.push({
+webpackConfiguration.module.rules.push({
     test: /\.(glsl|vs|fs|vert|frag)$/,
     exclude: /node_modules/,
     use: ['raw-loader', 'glslify-loader'],
 })
 
-module.exports = configWebpack;
+module.exports = webpackConfiguration;
