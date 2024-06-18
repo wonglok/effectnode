@@ -16,9 +16,12 @@ import '../style/global.style.css'
 import { create } from 'zustand'
 import { EditorApp } from '../component/EditorApp/EditorApp'
 
+// thankyouActivated //
+
 export class Editor {
     constructor() {
         let self = this
+        window.React = React
 
         this.cleans = []
         this.works = []
@@ -27,9 +30,9 @@ export class Editor {
         this.domElement.classList.add('effectnode-app-container')
         this.store = create((set, get) => {
             return {
+                offlines: ['apps'],
                 apps: [],
-                wins: [],
-
+                activatePop: '',
                 self,
                 set,
                 get,

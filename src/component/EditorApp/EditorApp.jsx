@@ -1,5 +1,7 @@
 import * as React from 'react'
 import { BeginBar } from '../BeginBar/BeginBar'
+import { BeginMenu } from '../BeginBar/BeginMenu'
+import { ThankYouList } from '../BeginBar/ThankYouList'
 export function EditorApp({ useStore }) {
     return (
         <div className='w-full h-full '>
@@ -16,11 +18,10 @@ export function EditorApp({ useStore }) {
                     height: `calc(100% - 1.6rem - 1.6rem * 0.0 - 2.75rem)`,
                 }}
             >
-                {/*  */}
-
-                {/*  */}
-
-                {/*  */}
+                <div className='w-full h-full relative'>
+                    <BeginMenu useStore={useStore}></BeginMenu>
+                    <ThankYouList useStore={useStore}></ThankYouList>
+                </div>
             </div>
             <div className='w-full from-gray-100 to-gray-500 bg-gradient-to-l ' style={{ height: `2.75rem` }}>
                 <BeginBar useStore={useStore}></BeginBar>
@@ -35,8 +36,6 @@ export function EditorApp({ useStore }) {
         </div>
     )
 }
-
-//
 
 //
 

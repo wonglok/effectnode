@@ -16,7 +16,9 @@ THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR I
  */
 
 export class Runner {
-    constructor() {}
+    constructor() {
+        window.React = React
+    }
 }
 
 //

@@ -1,6 +1,6 @@
 // const TerserPlugin = require("terser-webpack-plugin");
-const { WebpackManifestPlugin } = require("webpack-manifest-plugin");
-const path = require("path");
+const { WebpackManifestPlugin } = require('webpack-manifest-plugin')
+const path = require('path')
 // const webpack = require("webpack");
 
 const webpackConfiguration = {
@@ -24,6 +24,7 @@ const webpackConfiguration = {
     resolve: {
         alias: {
             ['@']: path.resolve(__dirname, './'),
+            ['src']: path.resolve(__dirname, './src'),
             ['components']: path.resolve(__dirname, './components'),
         },
         extensions: ['.js', '.jsx', '.mjs'],
@@ -46,7 +47,11 @@ const webpackConfiguration = {
                 },
             },
             {
-                test: /\.(png|svg|jpg|jpeg|gif)$/i,
+                test: /\.(svg)$/i,
+                loader: 'svg-url-loader',
+            },
+            {
+                test: /\.(png|jpg|jpeg|gif)$/i,
                 loader: 'file-loader',
             },
         ],
@@ -94,4 +99,4 @@ webpackConfiguration.module.rules.push({
     use: ['raw-loader', 'glslify-loader'],
 })
 
-module.exports = webpackConfiguration;
+module.exports = webpackConfiguration
