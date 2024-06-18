@@ -4,7 +4,7 @@
     "description": "effectnode runtime and in-app editor",
     "main": "./build-keep/manifest.json",
     "scripts": {
-        "version": "npm version 1.5.5",
+        "deploy:npm": "np patch",
         "dev": "npm run webpack:watch",
         "build": "npm run webpack:build",
         "webpack:watch": "webpack --mode development --watch --config webpack.config.cjs",
@@ -16,14 +16,12 @@
         "./build-keep/*"
     ],
     "keywords": [],
-    "repository": {
-        "url": ""
-    },
-    "author": "",
+    "author": "wonglok831",
     "license": "MIT",
     "private": false,
     "dependencies": {},
     "devDependencies": {
+        "np": "10.0.5",
         "react": "^18.3.1",
         "react-dom": "^18.3.1",
         "tailwindcss": "^3.4.4",
