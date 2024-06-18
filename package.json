@@ -15,7 +15,7 @@
     "files": [
         "package.json",
         "readme.md",
-        "./public/build-keep/*"
+        "public/build-keep/*"
     ],
     "keywords": [],
     "author": "wonglok831",
