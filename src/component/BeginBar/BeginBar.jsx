@@ -17,8 +17,10 @@ export function BeginBar({ useStore }) {
                 <div className='flex justify-start'>
                     <div
                         onClick={() => {
-                            if (activatePop) {
+                            if (activatePop === 'menu') {
                                 useStore.setState({ activatePop: '' })
+                            } else if (activatePop) {
+                                useStore.setState({ activatePop: 'menu' })
                             } else {
                                 useStore.setState({ activatePop: 'menu' })
                             }
@@ -43,8 +45,10 @@ export function BeginBar({ useStore }) {
                             className='text-right underline cursor-pointer'
                             onClick={() => {
                                 //
-                                if (activatePop) {
+                                if (activatePop === 'credits') {
                                     useStore.setState({ activatePop: '' })
+                                } else if (activatePop) {
+                                    useStore.setState({ activatePop: 'credits' })
                                 } else {
                                     useStore.setState({ activatePop: 'credits' })
                                 }
