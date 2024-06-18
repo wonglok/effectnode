@@ -1,11 +1,11 @@
 {
     "name": "effectnode",
-    "version": "1.6.1",
+    "version": "1.6.0",
     "description": "effectnode runtime and in-app editor",
     "main": "./build-keep/manifest.json",
     "scripts": {
         "test": "echo OK;",
-        "deploy:npm": "git add .; git commit -am \"deploy npm\"; git push origin master; np patch",
+        "deploy:npm": "npm run build; git add .; git commit -am \"deploy npm\"; git push origin master; np patch",
         "dev": "npm run webpack:watch",
         "build": "npm run webpack:build",
         "webpack:watch": "webpack --mode development --watch --config webpack.config.cjs",
