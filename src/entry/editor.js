@@ -17,25 +17,47 @@ THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR I
 
 export class Editor {
     constructor() {
-        this.isEditor = true
-
         let self = this
-
+        this.cleans = []
+        this.works = []
+        this.isEditor = true
         this.domElement = document.createElement('div')
         this.domElement.classList.add('effectnode-app-container')
         this.store = create((set, get) => {
             return {
-                editorSelf: self,
+                self,
                 set,
                 get,
             }
         })
 
-        this.root = createRoot(this.domElement, {})
+        this.setState = (v = {}) => {
+            this.store.setState(v)
+        }
+        this.getState = () => {
+            return this.store.getState()
+        }
+        this.onChange = (fnc) => {
+            let clean = self.store.subscribe(fnc)
+            this.cleans.push(clean)
+        }
 
+        this.onLoop = (fnc) => {
+            this.works.push(fnc)
+        }
+
+        this.onClean = (fnc) => {
+            this.cleans.push(fnc)
+        }
+
+        this.root = createRoot(this.domElement, {})
         this.root.render(<EditorApp parent={this}></EditorApp>)
 
         this.dispose = () => {
+            this.works = []
+            this.cleans.forEach((clean) => {
+                clean()
+            })
             this.root.unmount()
             if (this.domElement.parentNode) {
                 this.domElement.parentNode.removeChild(this.domElement)
