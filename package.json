@@ -2,7 +2,7 @@
     "name": "effectnode",
     "version": "1.6.0",
     "description": "effectnode runtime and in-app editor",
-    "main": "./public/build-keep/manifest.json",
+    "main": "./public/build-keep/index.min.js",
     "scripts": {
         "test": "echo OK;",
         "deploy:npm": "npm run build; git add .; git commit -am \"deploy npm\"; git push origin master; np patch",
