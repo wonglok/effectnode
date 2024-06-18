@@ -1,8 +1,3 @@
-import * as React from 'react'
-import { createRoot } from 'react-dom/client'
-import '../style/global.style.css'
-import { create } from 'zustand'
-import { EditorApp } from '../component/EditorApp/EditorApp'
 /** @license
  * MIT License
  * @description
@@ -15,9 +10,16 @@ The above copyright notice and this permission notice shall be included in all c
 THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
+import * as React from 'react'
+import { createRoot } from 'react-dom/client'
+import '../style/global.style.css'
+import { create } from 'zustand'
+import { EditorApp } from '../component/EditorApp/EditorApp'
+
 export class Editor {
     constructor() {
         let self = this
+
         this.cleans = []
         this.works = []
         this.isEditor = true
@@ -25,6 +27,9 @@ export class Editor {
         this.domElement.classList.add('effectnode-app-container')
         this.store = create((set, get) => {
             return {
+                apps: [],
+                wins: [],
+
                 self,
                 set,
                 get,
@@ -41,7 +46,6 @@ export class Editor {
             let clean = self.store.subscribe(fnc)
             this.cleans.push(clean)
         }
-
         this.onLoop = (fnc) => {
             this.works.push(fnc)
         }
@@ -51,7 +55,7 @@ export class Editor {
         }
 
         this.root = createRoot(this.domElement, {})
-        this.root.render(<EditorApp parent={this}></EditorApp>)
+        this.root.render(<EditorApp useStore={this.store} parent={this}></EditorApp>)
 
         this.dispose = () => {
             this.works = []
