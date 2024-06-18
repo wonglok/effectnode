@@ -1,4 +1,5 @@
 {
+  "index": "./index.min.js",
   "runner": "./runner.min.js",
   "editor": "./editor.min.js"
 }

@@ -1,6 +1,7 @@
-import { Runtime } from '../component/Runtime/Runtime'
+import { createRoot } from 'react-dom/client'
 import '../style/global.style.css'
-
+import { create } from 'zustand'
+import { EditorApp } from '../component/EditorApp/EditorApp'
 /** @license
  * MIT License
  * @description
@@ -14,13 +15,27 @@ THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR I
  */
 
 export class Editor {
-    constructor({ json }) {
+    constructor({  }) {
         this.domElement = document.createElement('div')
         this.domElement.classList.add('effectnode-app-container')
         this.isEditor = true
-        this.json = json
-        this.runtime = new Runtime({ parent: this, json: this.json })
+
+        this.store = create((set, get) => {
+            return {
+                set,
+                get,
+            }
+        })
+        this.root = createRoot(this.domElement, {})
+        
+        this.root.render(<EditorApp store={this.store}></EditorApp>)
+        
+        this.dispose = () =>{
+            this.root.unmount()
+            if (this.domElement.parentNode) {
+                this.domElement.parentNode.removeChild(this.domElement)
+            } 
+        }
     }
 }
 
-//

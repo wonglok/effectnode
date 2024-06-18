@@ -5,8 +5,9 @@ const path = require("path");
 
 const webpackConfiguration = {
     entry: {
-        runner: "./src/entry/runner.js",
-        editor: "./src/entry/editor.js",
+        index: './src/entry/index.js',
+        runner: './src/entry/runner.js',
+        editor: './src/entry/editor.js',
     },
     output: {
         clean: true,
@@ -14,8 +15,8 @@ const webpackConfiguration = {
             // do not specify a `name` here
             type: 'module',
         },
-        path: path.resolve(__dirname, "./build-keep"),
-        filename: "[name].min.js",
+        path: path.resolve(__dirname, './public/build-keep'),
+        filename: '[name].min.js',
     },
     experiments: {
         outputModule: true,
@@ -32,7 +33,7 @@ const webpackConfiguration = {
             {
                 test: /\.css$/i,
                 // use: ["style-loader", "css-loader", "postcss-loader"],
-                use: ["style-loader", "css-loader", "postcss-loader"],
+                use: ['style-loader', 'css-loader', 'postcss-loader'],
             },
             {
                 test: /\.(js|jsx)$/,
@@ -46,8 +47,8 @@ const webpackConfiguration = {
             },
             {
                 test: /\.(png|svg|jpg|jpeg|gif)$/i,
-                loader: "file-loader",
-            }
+                loader: 'file-loader',
+            },
         ],
     },
     plugins: [
@@ -57,7 +58,7 @@ const webpackConfiguration = {
                 file.path = file.path.replace('auto/', './')
                 console.log('file', file)
                 return file
-            }
+            },
         }),
     ],
     // optimization: {
@@ -70,7 +71,7 @@ const webpackConfiguration = {
     watchOptions: {
         ignored: /(node_modules|extensions|js-build)/,
     },
-};
+}
 
 webpackConfiguration.module.rules.push({
     test: /\.(glb|gltf|hdr|exr|fbx)$/,
