@@ -4,7 +4,7 @@
     "description": "effectnode runtime and in-app editor",
     "main": "./build-keep/manifest.json",
     "scripts": {
-        "version": "npm version 1.5.4",
+        "version": "npm version 1.5.5",
         "dev": "npm run webpack:watch",
         "build": "npm run webpack:build",
         "webpack:watch": "webpack --mode development --watch --config webpack.config.cjs",
