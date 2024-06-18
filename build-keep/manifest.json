@@ -1,0 +1,4 @@
+{
+  "runner": "./runner.min.js",
+  "editor": "./editor.min.js"
+}
