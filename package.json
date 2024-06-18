@@ -6,11 +6,15 @@
     "scripts": {
         "test": "echo OK;",
         "deploy:npm": "npm run build; git add .; git commit -am \"deploy npm\"; git push origin master; np patch",
-        "dev": "npm run webpack:watch",
+        "dev": "concurrently \"npm run dev:code\" \" npm run serve \" ",
+        "dev:code": "npm run webpack:watch",
         "build": "npm run webpack:build",
-        "serve": "serve ./public/build-keep --cors",
+        "serve": "serve ./public/build-keep --cors -p 3005",
         "webpack:watch": "webpack --mode development --watch --config webpack.config.cjs",
         "webpack:build": "NODE_ENV=production webpack --mode=production"
+    },
+    "bin": {
+        "effectnode": "./bin"
     },
     "files": [
         "package.json",
@@ -27,6 +31,7 @@
         "@babel/preset-react": "^7.24.1",
         "autoprefixer": "^10.4.19",
         "babel-loader": "^9.1.3",
+        "concurrently": "^8.2.2",
         "cors": "^2.8.5",
         "css-loader": "^7.1.1",
         "express": "^4.19.2",

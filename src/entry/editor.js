@@ -15,7 +15,7 @@ THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR I
  */
 
 export class Editor {
-    constructor({  }) {
+    constructor({}) {
         this.domElement = document.createElement('div')
         this.domElement.classList.add('effectnode-app-container')
         this.isEditor = true
@@ -27,15 +27,14 @@ export class Editor {
             }
         })
         this.root = createRoot(this.domElement, {})
-        
+
         this.root.render(<EditorApp store={this.store}></EditorApp>)
-        
-        this.dispose = () =>{
+
+        this.dispose = () => {
             this.root.unmount()
             if (this.domElement.parentNode) {
                 this.domElement.parentNode.removeChild(this.domElement)
-            } 
+            }
         }
     }
 }
-
