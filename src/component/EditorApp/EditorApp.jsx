@@ -1,19 +1,9 @@
-import { useEffect } from "react"
+import * as React from 'react'
 
-export function EditorApp({ store }) {
-    useEffect(() => {
-        console.log(store)
-    }, [store])
+export function EditorApp({ parent }) {
 
-    return <div>
-        <button onClick={() =>{
-
-            console.log('yo')
-        }}>Click</button>
-        <div>234</div>
-        <div>234</div>
-        <div>234</div>
-    </div>
+    console.log(parent)
+    return <div>5</div>
 }
 //
 
@@ -30,3 +20,10 @@ export function EditorApp({ store }) {
 //
 
 //
+
+//
+
+//p
+
+
+

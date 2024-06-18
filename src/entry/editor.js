@@ -1,3 +1,4 @@
+import * as React from 'react'
 import { createRoot } from 'react-dom/client'
 import '../style/global.style.css'
 import { create } from 'zustand'
@@ -15,20 +16,24 @@ THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR I
  */
 
 export class Editor {
-    constructor({}) {
-        this.domElement = document.createElement('div')
-        this.domElement.classList.add('effectnode-app-container')
+    constructor() {
         this.isEditor = true
 
+        let self = this
+
+        this.domElement = document.createElement('div')
+        this.domElement.classList.add('effectnode-app-container')
         this.store = create((set, get) => {
             return {
+                editorSelf: self,
                 set,
                 get,
             }
         })
+
         this.root = createRoot(this.domElement, {})
 
-        this.root.render(<EditorApp store={this.store}></EditorApp>)
+        this.root.render(<EditorApp parent={this}></EditorApp>)
 
         this.dispose = () => {
             this.root.unmount()
@@ -38,3 +43,5 @@ export class Editor {
         }
     }
 }
+
+//

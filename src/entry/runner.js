@@ -1,3 +1,5 @@
+import * as React from 'react'
+
 import '../style/global.style.css'
 /** @license
  * MIT License
