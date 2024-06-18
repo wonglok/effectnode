@@ -1,6 +1,6 @@
 {
     "name": "effectnode",
-    "version": "1.6.4",
+    "version": "1.6.5",
     "description": "effectnode runtime and in-app editor",
     "main": "./public/build-keep/index.min.js",
     "scripts": {
