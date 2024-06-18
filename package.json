@@ -1,6 +1,6 @@
 {
     "name": "effectnode",
-    "version": "1.6.0",
+    "version": "1.6.1",
     "description": "effectnode runtime and in-app editor",
     "main": "./build-keep/manifest.json",
     "scripts": {
