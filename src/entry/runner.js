@@ -1,4 +1,4 @@
-import { Runtime } from '../component/runtime/runtime'
+import { Runtime } from '../component/Runtime/Runtime'
 import '../style/global.style.css'
 /** @license
  * MIT License

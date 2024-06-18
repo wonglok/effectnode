@@ -1,4 +1,4 @@
-import { Runtime } from '../component/runtime/runtime';
+import { Runtime } from '../component/Runtime/Runtime'
 import '../style/global.style.css'
 
 /** @license
@@ -13,13 +13,14 @@ The above copyright notice and this permission notice shall be included in all c
 THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-
 export class Editor {
-    constructor ({ json }) {
+    constructor({ json }) {
         this.domElement = document.createElement('div')
         this.domElement.classList.add('effectnode-app-container')
         this.isEditor = true
-        this.json = json;
+        this.json = json
         this.runtime = new Runtime({ parent: this, json: this.json })
     }
 }
+
+//
