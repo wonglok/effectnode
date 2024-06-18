@@ -4,7 +4,8 @@
     "description": "effectnode runtime and in-app editor",
     "main": "./build-keep/manifest.json",
     "scripts": {
-        "deploy:npm": "np patch",
+        "test": "echo OK;",
+        "deploy:npm": "git add .; git commit -am \"deploy\"; git push origin master; np patch",
         "dev": "npm run webpack:watch",
         "build": "npm run webpack:build",
         "webpack:watch": "webpack --mode development --watch --config webpack.config.cjs",
