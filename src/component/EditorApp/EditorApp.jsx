@@ -28,16 +28,6 @@ export function EditorApp({ useStore }) {
             <div className='w-full from-gray-100 to-gray-500 bg-gradient-to-l ' style={{ height: `2.75rem` }}>
                 <BeginBar useStore={useStore}></BeginBar>
             </div>
-
-            {/* 
-                <div className='w-full from-gray-100 to-gray-500 bg-gradient-to-r ' style={{ height: `1.6rem` }}>
-                    <div className='w-full h-full flex items-center justify-between px-2 text-sm'>
-                        <div className=''>EffectNode FX</div>
-                        <div></div>
-                        <div className='text-white'>Version: {version}</div>
-                    </div>
-                </div>
-            */}
         </div>
     )
 }

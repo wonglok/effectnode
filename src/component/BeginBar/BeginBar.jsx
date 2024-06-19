@@ -1,11 +1,14 @@
 import * as React from 'react'
 import { version } from '../../../package.json'
 import icon from './img/effectnode-icon.svg'
+import { myWins } from '../utils/myApps'
+import { getID } from '../utils/getID'
 
 export function BeginBar({ useStore }) {
     let apps = useStore((r) => r.apps)
     let wins = useStore((r) => r.wins)
     let overlayPop = useStore((r) => r.overlayPop)
+
     return (
         <>
             <div className='w-full h-full flex items-center justify-between text-sm'>
@@ -31,6 +34,7 @@ export function BeginBar({ useStore }) {
                     </div>
 
                     {apps.map((app) => {
+                        //
                         // let app = apps.find((r) => r._id === win.appID)
                         let win = wins.find((r) => r.appID === app._id)
                         return (
@@ -40,14 +44,28 @@ export function BeginBar({ useStore }) {
                                         overlayPop: '',
                                     })
 
-                                    let idx = wins.findIndex((w) => w._id === win._id)
-                                    wins.splice(idx, 1)
-                                    wins.push(win)
+                                    if (win) {
+                                        let idx = wins.findIndex((w) => w._id === win._id)
+                                        wins.splice(idx, 1)
+                                        wins.push(win)
 
-                                    wins = wins.map((eachWin, idx) => {
-                                        eachWin.zIndex = idx
-                                        return eachWin
-                                    })
+                                        wins = wins.map((eachWin, idx) => {
+                                            eachWin.zIndex = idx
+                                            return eachWin
+                                        })
+                                    } else {
+                                        //
+                                        let appID = app._id
+
+                                        let type = app.type
+
+                                        let win = JSON.parse(JSON.stringify(myWins.find((r) => r.type === type)))
+                                        win._id = getID()
+                                        win.appID = appID
+                                        win.zIndex = wins.length
+
+                                        wins.push(win)
+                                    }
 
                                     useStore.setState({
                                         apps: [...apps],

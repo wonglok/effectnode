@@ -5,13 +5,13 @@ export function WinGeneric({ useStore, idx, win, topBar, children }) {
     let wins = useStore((r) => r.wins)
     let mouseState = useStore((r) => r.mouseState)
 
-    console.log(win.top)
+    // console.log(win.top)
     useEffect(() => {
         if (!mouseState) {
             return
         }
+
         let hh = (ev) => {
-            //
             //
             if (mouseState.isDown && mouseState.winID === win._id && mouseState.func === 'moveWin') {
                 mouseState.now = [ev.pageX, ev.pageY]
@@ -21,7 +21,11 @@ export function WinGeneric({ useStore, idx, win, topBar, children }) {
                     mouseState.now[0] - mouseState.last[0],
                     mouseState.now[1] - mouseState.last[1],
                 ]
-                mouseState.last = [ev.pageX, ev.pageY]
+                mouseState.last = [
+                    //
+                    ev.pageX,
+                    ev.pageY,
+                ]
 
                 mouseState.accu = [
                     //
@@ -242,10 +246,13 @@ export function WinGeneric({ useStore, idx, win, topBar, children }) {
                         height: `30px`,
                         borderTopLeftRadius: '10px',
                         borderTopRightRadius: '10px',
-                        backgroundColor: 'white',
+                        borderBottom: `gray solid 1px`,
+                        backgroundColor: `hsl(200, ${((idx / (wins.length - 1)) * 100).toFixed(0)}%, 80%)`,
+                        //
+                        // backgroundColor: 'white',
+                        //
                     }}
                     onMouseDown={(ev) => {
-                        //
                         mouseState.isDown = true
                         mouseState.winID = win._id
                         mouseState.func = 'moveWin'
@@ -271,8 +278,19 @@ export function WinGeneric({ useStore, idx, win, topBar, children }) {
                         //
                     }}
                 >
-                    <div></div>
-                    <div className=' select-none'>{topBar}</div>
+                    <div className='flex items-center h-full pl-2'>
+                        <div
+                            className='w-4 h-4 bg-red-500 rounded-full cursor-pointer'
+                            onClick={() => {
+                                //
+                                useStore.setState({
+                                    wins: wins.filter((r) => r._id !== win._id),
+                                })
+                                //
+                            }}
+                        ></div>
+                    </div>
+                    <div className=' select-none flex items-center h-full'>{topBar}</div>
                     <div></div>
                 </div>
                 <div
@@ -280,7 +298,6 @@ export function WinGeneric({ useStore, idx, win, topBar, children }) {
                     style={{
                         userSelect: 'none',
                         height: `${win.height}px`,
-                        backgroundColor: `hsl(${((idx / wins.length) * 360).toFixed(0)}, 50%, 50%)`,
                     }}
                 >
                     {children}

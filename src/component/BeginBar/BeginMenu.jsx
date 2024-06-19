@@ -1,4 +1,5 @@
 import { getID } from '../utils/getID'
+import { myApps, myWins } from '../utils/myApps'
 import logo from './img/logo.svg'
 export function BeginMenu({ useStore }) {
     let overlayPop = useStore((r) => r.overlayPop)
@@ -41,22 +42,18 @@ export function BeginMenu({ useStore }) {
                             onClick={() => {
                                 if (!apps.some((r) => r.type === 'editor')) {
                                     let appID = getID()
-                                    apps.push({
-                                        _id: appID,
-                                        type: 'editor',
-                                        appIconText: ' 👨🏼‍💻 Editor',
-                                        wins: [],
-                                    })
-                                    wins.push({
-                                        _id: getID(),
-                                        appID: appID,
-                                        type: 'editor',
-                                        top: 10,
-                                        left: 10,
-                                        width: 100,
-                                        height: 100,
-                                        zIndex: wins.length,
-                                    })
+
+                                    let app = JSON.parse(JSON.stringify(myApps.find((r) => r.type === 'editor')))
+                                    app._id = appID
+
+                                    let win = JSON.parse(JSON.stringify(myWins.find((r) => r.type === 'editor')))
+                                    win._id = getID()
+                                    win.appID = appID
+                                    win.zIndex = wins.length
+
+                                    apps.push(app)
+                                    wins.push(win)
+
                                     useStore.setState({
                                         apps: [...apps],
                                         wins: [...wins],
@@ -73,22 +70,18 @@ export function BeginMenu({ useStore }) {
                                 //
                                 if (!apps.some((r) => r.type === 'previwer')) {
                                     let appID = getID()
-                                    apps.push({
-                                        _id: appID,
-                                        type: 'previwer',
-                                        appIconText: ' 🖼️ Previwer',
-                                        wins: [],
-                                    })
-                                    wins.push({
-                                        _id: getID(),
-                                        appID: appID,
-                                        type: 'previwer',
-                                        top: 20,
-                                        left: 20,
-                                        width: 100,
-                                        height: 100,
-                                        zIndex: wins.length,
-                                    })
+
+                                    let app = JSON.parse(JSON.stringify(myApps.find((r) => r.type === 'previwer')))
+                                    app._id = appID
+
+                                    let win = JSON.parse(JSON.stringify(myWins.find((r) => r.type === 'previwer')))
+                                    win._id = getID()
+                                    win.appID = appID
+                                    win.zIndex = wins.length
+
+                                    apps.push(app)
+                                    wins.push(win)
+
                                     useStore.setState({
                                         apps: [...apps],
                                         wins: [...wins],
