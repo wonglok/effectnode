@@ -70,6 +70,103 @@ export function WinGeneric({ useStore, idx, win, topBar, children }) {
                     wins: [...wins],
                 })
             }
+
+            if (mouseState.isDown && mouseState.winID === win._id && mouseState.func === 'resizeWinTR') {
+                mouseState.now = [ev.pageX, ev.pageY]
+
+                mouseState.delta = [
+                    //
+                    mouseState.now[0] - mouseState.last[0],
+                    mouseState.now[1] - mouseState.last[1],
+                ]
+                mouseState.last = [ev.pageX, ev.pageY]
+
+                mouseState.accu = [
+                    //
+                    mouseState.accu[0] + mouseState.delta[0],
+                    mouseState.accu[1] + mouseState.delta[1],
+                ]
+
+                if (!isNaN(mouseState.delta[0])) {
+                    win.width += mouseState.delta[0]
+                }
+                if (!isNaN(mouseState.delta[1])) {
+                    win.height += -mouseState.delta[1]
+                    win.top += mouseState.delta[1]
+                }
+
+                useStore.setState({
+                    mouseState: {
+                        ...mouseState,
+                    },
+                    wins: [...wins],
+                })
+            }
+
+            if (mouseState.isDown && mouseState.winID === win._id && mouseState.func === 'resizeWinBL') {
+                mouseState.now = [ev.pageX, ev.pageY]
+
+                mouseState.delta = [
+                    //
+                    mouseState.now[0] - mouseState.last[0],
+                    mouseState.now[1] - mouseState.last[1],
+                ]
+                mouseState.last = [ev.pageX, ev.pageY]
+
+                mouseState.accu = [
+                    //
+                    mouseState.accu[0] + mouseState.delta[0],
+                    mouseState.accu[1] + mouseState.delta[1],
+                ]
+
+                if (!isNaN(mouseState.delta[0])) {
+                    win.width += mouseState.delta[0] * -1
+                    win.left += mouseState.delta[0]
+                }
+                if (!isNaN(mouseState.delta[1])) {
+                    win.height += mouseState.delta[1]
+                }
+
+                useStore.setState({
+                    mouseState: {
+                        ...mouseState,
+                    },
+                    wins: [...wins],
+                })
+            }
+            //
+            if (mouseState.isDown && mouseState.winID === win._id && mouseState.func === 'resizeWinTL') {
+                mouseState.now = [ev.pageX, ev.pageY]
+
+                mouseState.delta = [
+                    //
+                    mouseState.now[0] - mouseState.last[0],
+                    mouseState.now[1] - mouseState.last[1],
+                ]
+                mouseState.last = [ev.pageX, ev.pageY]
+
+                mouseState.accu = [
+                    //
+                    mouseState.accu[0] + mouseState.delta[0],
+                    mouseState.accu[1] + mouseState.delta[1],
+                ]
+
+                if (!isNaN(mouseState.delta[0])) {
+                    win.width += mouseState.delta[0] * -1
+                    win.left += mouseState.delta[0]
+                }
+                if (!isNaN(mouseState.delta[1])) {
+                    win.top += mouseState.delta[1]
+                    win.height += mouseState.delta[1] * -1
+                }
+
+                useStore.setState({
+                    mouseState: {
+                        ...mouseState,
+                    },
+                    wins: [...wins],
+                })
+            }
             //
             //
         }
@@ -189,12 +286,102 @@ export function WinGeneric({ useStore, idx, win, topBar, children }) {
                     {children}
                 </div>
                 <div
-                    className='w-7 h-7 bg-gray-500 absolute -bottom-3 -right-3 rounded-full'
+                    className='w-7 h-7 bg-gray-500 absolute -bottom-3 -right-3 rounded-full hover:opacity-100 opacity-0 duration-300 transition-opacity cursor-se-resize'
                     onMouseDown={(ev) => {
                         //
                         mouseState.isDown = true
                         mouseState.winID = win._id
                         mouseState.func = 'resizeWinBR'
+                        mouseState.start = [ev.pageX, ev.pageY]
+                        mouseState.now = [ev.pageX, ev.pageY]
+                        mouseState.last = [ev.pageX, ev.pageY]
+                        useStore.setState({
+                            mouseState: { ...mouseState },
+                        })
+
+                        let idx = wins.findIndex((w) => w._id === win._id)
+                        wins.splice(idx, 1)
+                        wins.push(win)
+
+                        wins = wins.map((eachWin, idx) => {
+                            eachWin.zIndex = idx
+                            return eachWin
+                        })
+
+                        useStore.setState({
+                            apps: [...apps],
+                            wins: [...wins],
+                        })
+                    }}
+                ></div>
+
+                <div
+                    className='w-7 h-7 bg-gray-500 absolute -top-3 -right-3 rounded-full hover:opacity-100 opacity-0 duration-300 transition-opacity cursor-ne-resize'
+                    onMouseDown={(ev) => {
+                        //
+                        mouseState.isDown = true
+                        mouseState.winID = win._id
+                        mouseState.func = 'resizeWinTR'
+                        mouseState.start = [ev.pageX, ev.pageY]
+                        mouseState.now = [ev.pageX, ev.pageY]
+                        mouseState.last = [ev.pageX, ev.pageY]
+                        useStore.setState({
+                            mouseState: { ...mouseState },
+                        })
+
+                        let idx = wins.findIndex((w) => w._id === win._id)
+                        wins.splice(idx, 1)
+                        wins.push(win)
+
+                        wins = wins.map((eachWin, idx) => {
+                            eachWin.zIndex = idx
+                            return eachWin
+                        })
+
+                        useStore.setState({
+                            apps: [...apps],
+                            wins: [...wins],
+                        })
+                    }}
+                ></div>
+
+                <div
+                    className='w-7 h-7 bg-gray-500 absolute -bottom-3 -left-3 rounded-full hover:opacity-100 opacity-0 duration-300 transition-opacity cursor-sw-resize'
+                    onMouseDown={(ev) => {
+                        //
+                        mouseState.isDown = true
+                        mouseState.winID = win._id
+                        mouseState.func = 'resizeWinBL'
+                        mouseState.start = [ev.pageX, ev.pageY]
+                        mouseState.now = [ev.pageX, ev.pageY]
+                        mouseState.last = [ev.pageX, ev.pageY]
+                        useStore.setState({
+                            mouseState: { ...mouseState },
+                        })
+
+                        let idx = wins.findIndex((w) => w._id === win._id)
+                        wins.splice(idx, 1)
+                        wins.push(win)
+
+                        wins = wins.map((eachWin, idx) => {
+                            eachWin.zIndex = idx
+                            return eachWin
+                        })
+
+                        useStore.setState({
+                            apps: [...apps],
+                            wins: [...wins],
+                        })
+                    }}
+                ></div>
+
+                <div
+                    className='w-7 h-7 bg-gray-500 absolute -top-3 -left-3 rounded-full hover:opacity-100 opacity-0 duration-300 transition-opacity cursor-nw-resize'
+                    onMouseDown={(ev) => {
+                        //
+                        mouseState.isDown = true
+                        mouseState.winID = win._id
+                        mouseState.func = 'resizeWinTL'
                         mouseState.start = [ev.pageX, ev.pageY]
                         mouseState.now = [ev.pageX, ev.pageY]
                         mouseState.last = [ev.pageX, ev.pageY]

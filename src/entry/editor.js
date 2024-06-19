@@ -33,7 +33,9 @@ export class Editor {
             return {
                 apps: [],
                 wins: [],
-                activeProject: '',
+                activeProject: false,
+
+                //
                 overlayPop: '',
                 set,
                 get,
