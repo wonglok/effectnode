@@ -28,16 +28,34 @@ export class Editor {
         this.isEditor = true
         this.domElement = document.createElement('div')
         this.domElement.classList.add('effectnode-app-container')
+
         this.store = create((set, get) => {
             return {
                 apps: [],
+                wins: [],
                 activeProject: false,
-                overlayPop: 'thankyou',
-                self,
+                overlayPop: '',
                 set,
                 get,
+
+                mouseState: {
+                    winID: '',
+                    isDown: false,
+                    start: [0, 0],
+                    now: [0, 0],
+                    last: [0, 0],
+                    delta: [0, 0],
+                    accu: [0, 0],
+                },
             }
         })
+        this.store.removeKeys = [
+            //
+            'mouseState',
+            'overlayPop',
+            'get',
+            'set',
+        ]
 
         this.setState = (v = {}) => {
             this.store.setState(v)

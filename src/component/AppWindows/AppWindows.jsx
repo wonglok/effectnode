@@ -1,35 +1,24 @@
 import { useEffect, useState } from 'react'
+import { WinGeneric } from './Win/Generic/WinGeneric'
 
-export function AppWindows() {
-    let [scale, setScale] = useState(1)
-    useEffect(() => {
-        setScale((1 / window.devicePixelRatio) * 0.333)
-    }, [])
+export function AppWindows({ useStore }) {
+    let apps = useStore((r) => r.apps)
+    let wins = useStore((r) => r.wins)
+
+    console.log(wins)
     return (
         <>
             {/*  */}
-            <Canvas>
-                <NoRender></NoRender>
 
-                <ambientLight intensity={1}></ambientLight>
-                <DragControls></DragControls>
-                <Box rotation={[0, 0.13, 0]}>
-                    <Html scale={scale} transform>
-                        <div className='bg-gray-200 bg-opacity-20' style={{ width: '500px', height: '500px' }}>
-                            123
-                        </div>
-                    </Html>
-                    <meshStandardMaterial color={'red'}></meshStandardMaterial>
-                </Box>
-            </Canvas>
+            {wins.map((win, idx) => {
+                return (
+                    <WinGeneric idx={idx} win={win} useStore={useStore} key={win._id + 'win'}>
+                        123
+                    </WinGeneric>
+                )
+            })}
+
             {/*  */}
         </>
     )
-}
-
-function NoRender() {
-    useFrame(({ gl, scene, camera }) => {
-        gl.render(scene, camera)
-    }, 1)
-    return null
 }

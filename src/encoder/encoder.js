@@ -27,16 +27,18 @@ export async function createBuilder() {
     console.log({ reactPkgJson })
 
     const code = `
-        console.log(123, 'yo')
+        import * as React from 'react'
+        console.log(React, 'yo')
     `
+
     //Creating our entry file with the user-submitted code
-    memfs.writeFileSync('/home/web/app/temp.js', code)
+    memfs.writeFileSync('/home/web/app/src/entryApp.js', code)
 
     const compiler = webpack({
         mode: 'production',
-        entry: '/home/web/app/temp.js',
+        entry: '/home/web/app/src/entryApp.js',
         output: {
-            path: `/home/web/build/`,
+            path: `/home/web/app/build/`,
             filename: 'bundle.js',
         },
         module: {
@@ -58,7 +60,7 @@ export async function createBuilder() {
     compiler.outputFileSystem = memfs
 
     compiler.compile(() => {
-        memfs.readFileSync('./')
+        memfs.readFileSync('/home/web/build/bundle.js')
     })
 
     //

@@ -3,8 +3,8 @@ import { version } from '../../../package.json'
 import icon from './img/effectnode-icon.svg'
 
 export function BeginBar({ useStore }) {
-    // let wins = useStore((r) => r.wins)
     let apps = useStore((r) => r.apps)
+    let wins = useStore((r) => r.wins)
     let overlayPop = useStore((r) => r.overlayPop)
     return (
         <>
@@ -31,8 +31,32 @@ export function BeginBar({ useStore }) {
                     </div>
 
                     {apps.map((app) => {
+                        // let app = apps.find((r) => r._id === win.appID)
+                        let win = wins.find((r) => r.appID === app._id)
                         return (
-                            <div className='bg-white text-black rounded-full overflow-hidden h-9 m-1 px-4 flex items-center justify-center cursor-pointer'>
+                            <div
+                                onClick={() => {
+                                    useStore.setState({
+                                        overlayPop: '',
+                                    })
+
+                                    let idx = wins.findIndex((w) => w._id === win._id)
+                                    wins.splice(idx, 1)
+                                    wins.push(win)
+
+                                    wins = wins.map((eachWin, idx) => {
+                                        eachWin.zIndex = idx
+                                        return eachWin
+                                    })
+
+                                    useStore.setState({
+                                        apps: [...apps],
+                                        wins: [...wins],
+                                    })
+                                }}
+                                key={app._id + 'appIcon'}
+                                className='bg-white text-black rounded-full overflow-hidden h-9 m-1 px-4 flex items-center justify-center cursor-pointer'
+                            >
                                 {app.appIconText}
                             </div>
                         )

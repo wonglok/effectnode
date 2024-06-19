@@ -21,7 +21,7 @@ export function ThankYouList({ useStore }) {
                         <Lottie className='w-full h-1/3 my-10' loop={true} animationData={blow}></Lottie>
                         <div className='w-full'>
                             <div className='text-xl  text-center  my-10'>Thank you Internet for Freebies!</div>
-                            <div className='text-sm text-center flex justify-center'>
+                            <div className='text-xs text-center flex justify-center'>
                                 <ol className='text-left'>
                                     <li className=' underline  list-decimal'>
                                         <a target='_blank' className='text-blue-500' href={`https://icons8.com`}>
