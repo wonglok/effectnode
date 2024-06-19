@@ -40,6 +40,37 @@ export function WinGeneric({ useStore, idx, win, topBar, children }) {
                     wins: [...wins],
                 })
             }
+
+            if (mouseState.isDown && mouseState.winID === win._id && mouseState.func === 'resizeWinBR') {
+                mouseState.now = [ev.pageX, ev.pageY]
+
+                mouseState.delta = [
+                    //
+                    mouseState.now[0] - mouseState.last[0],
+                    mouseState.now[1] - mouseState.last[1],
+                ]
+                mouseState.last = [ev.pageX, ev.pageY]
+
+                mouseState.accu = [
+                    //
+                    mouseState.accu[0] + mouseState.delta[0],
+                    mouseState.accu[1] + mouseState.delta[1],
+                ]
+
+                if (!isNaN(mouseState.delta[0])) {
+                    win.width += mouseState.delta[0]
+                }
+                if (!isNaN(mouseState.delta[1])) {
+                    win.height += mouseState.delta[1]
+                }
+
+                useStore.setState({
+                    mouseState: {
+                        ...mouseState,
+                    },
+                    wins: [...wins],
+                })
+            }
             //
             //
         }
@@ -57,12 +88,17 @@ export function WinGeneric({ useStore, idx, win, topBar, children }) {
         let hh = (ev) => {
             //
             //
-            mouseState.isDown = false
-            mouseState.winID = ''
-            mouseState.start = [
-                //
-                0, 0,
-            ]
+            mouseState = {
+                winID: '',
+                func: 'moveWin',
+                isDown: false,
+                start: [0, 0],
+                now: [0, 0],
+                last: [0, 0],
+                delta: [0, 0],
+                accu: [0, 0],
+            }
+
             useStore.setState({
                 mouseState: { ...mouseState },
             })
@@ -91,12 +127,11 @@ export function WinGeneric({ useStore, idx, win, topBar, children }) {
                 onClick={() => {}}
             >
                 <div
-                    className='w-full'
+                    className='w-full  flex justify-between'
                     style={{
                         height: `30px`,
                         borderTopLeftRadius: '10px',
                         borderTopRightRadius: '10px',
-
                         backgroundColor: 'white',
                     }}
                     onMouseDown={(ev) => {
@@ -105,6 +140,50 @@ export function WinGeneric({ useStore, idx, win, topBar, children }) {
                         mouseState.winID = win._id
                         mouseState.func = 'moveWin'
                         mouseState.start = [ev.pageX, ev.pageY]
+                        mouseState.now = [ev.pageX, ev.pageY]
+                        mouseState.last = [ev.pageX, ev.pageY]
+                        useStore.setState({
+                            mouseState: { ...mouseState },
+                        })
+                        let idx = wins.findIndex((w) => w._id === win._id)
+                        wins.splice(idx, 1)
+                        wins.push(win)
+
+                        wins = wins.map((eachWin, idx) => {
+                            eachWin.zIndex = idx
+                            return eachWin
+                        })
+
+                        useStore.setState({
+                            apps: [...apps],
+                            wins: [...wins],
+                        })
+                        //
+                    }}
+                >
+                    <div></div>
+                    <div className=' select-none'>{topBar}</div>
+                    <div></div>
+                </div>
+                <div
+                    className='w-full'
+                    style={{
+                        userSelect: 'none',
+                        height: `${win.height}px`,
+                        backgroundColor: `hsl(${((idx / wins.length) * 360).toFixed(0)}, 50%, 50%)`,
+                    }}
+                >
+                    {children}
+                </div>
+                <div
+                    className='w-7 h-7 bg-gray-500 absolute -bottom-3 -right-3 rounded-full'
+                    onMouseDown={(ev) => {
+                        //
+                        mouseState.isDown = true
+                        mouseState.winID = win._id
+                        mouseState.func = 'resizeWinBR'
+                        mouseState.start = [ev.pageX, ev.pageY]
+                        mouseState.now = [ev.pageX, ev.pageY]
                         mouseState.last = [ev.pageX, ev.pageY]
                         useStore.setState({
                             mouseState: { ...mouseState },
@@ -123,18 +202,8 @@ export function WinGeneric({ useStore, idx, win, topBar, children }) {
                             apps: [...apps],
                             wins: [...wins],
                         })
-                        //
                     }}
                 ></div>
-                <div
-                    className='w-full'
-                    style={{
-                        height: `${win.height}px`,
-                        backgroundColor: `hsl(${((idx / wins.length) * 360).toFixed(0)}, 50%, 50%)`,
-                    }}
-                >
-                    {children}
-                </div>
             </div>
             {/*  */}
         </>

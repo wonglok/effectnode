@@ -12,7 +12,7 @@ export function AppWindows({ useStore }) {
 
             {wins.map((win, idx) => {
                 return (
-                    <WinGeneric idx={idx} win={win} useStore={useStore} key={win._id + 'win'}>
+                    <WinGeneric idx={idx} win={win} useStore={useStore} topBar={<div>123</div>} key={win._id + 'win'}>
                         123
                     </WinGeneric>
                 )
