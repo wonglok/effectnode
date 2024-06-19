@@ -53,6 +53,7 @@ export function ThankYouList({ useStore }) {
                     </div>
                 </div>
             )}
+
             {/*  */}
         </>
     )

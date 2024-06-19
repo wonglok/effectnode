@@ -1,5 +1,4 @@
-import { useEffect, useState } from 'react'
-import { Vector2 } from 'three'
+import { useEffect } from 'react'
 
 export function WinGeneric({ useStore, idx, win, topBar, children }) {
     let apps = useStore((r) => r.apps)
@@ -124,7 +123,21 @@ export function WinGeneric({ useStore, idx, win, topBar, children }) {
                     borderTopLeftRadius: '10px',
                     borderTopRightRadius: '10px',
                 }}
-                onClick={() => {}}
+                onMouseDown={() => {
+                    let idx = wins.findIndex((w) => w._id === win._id)
+                    wins.splice(idx, 1)
+                    wins.push(win)
+
+                    wins = wins.map((eachWin, idx) => {
+                        eachWin.zIndex = idx
+                        return eachWin
+                    })
+
+                    useStore.setState({
+                        apps: [...apps],
+                        wins: [...wins],
+                    })
+                }}
             >
                 <div
                     className='w-full  flex justify-between'

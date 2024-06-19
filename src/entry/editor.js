@@ -33,7 +33,7 @@ export class Editor {
             return {
                 apps: [],
                 wins: [],
-                activeProject: false,
+                activeProject: '',
                 overlayPop: '',
                 set,
                 get,
@@ -50,6 +50,12 @@ export class Editor {
                 },
             }
         })
+        this.store.saveKeys = [
+            //
+            'apps',
+            'wins',
+            'activeProject',
+        ]
         this.store.removeKeys = [
             //
             'mouseState',
