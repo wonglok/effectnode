@@ -40,6 +40,7 @@ export class Editor {
 
                 mouseState: {
                     winID: '',
+                    func: 'moveWin',
                     isDown: false,
                     start: [0, 0],
                     now: [0, 0],
