@@ -56,13 +56,6 @@ export class Editor {
             'wins',
             'activeProject',
         ]
-        this.store.removeKeys = [
-            //
-            'mouseState',
-            'overlayPop',
-            'get',
-            'set',
-        ]
 
         this.setState = (v = {}) => {
             this.store.setState(v)
