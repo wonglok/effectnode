@@ -1,5 +1,7 @@
-import { useEffect, useState } from 'react'
+// import { createBuilder } from '@/src/encoder/createBuilder'
+import { Editor } from './Win/Editor/Editor'
 import { WinGeneric } from './Win/Generic/WinGeneric'
+import { Preview } from './Win/Preview/Preview'
 
 export function AppWindows({ useStore }) {
     // let apps = useStore((r) => r.apps)
@@ -7,8 +9,6 @@ export function AppWindows({ useStore }) {
 
     return (
         <>
-            {/*  */}
-
             {wins.map((win, idx) => {
                 return (
                     <WinGeneric
@@ -18,7 +18,19 @@ export function AppWindows({ useStore }) {
                         topBar={<div>{win.title}</div>}
                         key={win._id + 'win'}
                     >
-                        123
+                        {win.type === 'editor' && (
+                            <>
+                                <Editor></Editor>
+                            </>
+                        )}
+
+                        {win.type === 'preview' && (
+                            <>
+                                <Preview></Preview>
+                            </>
+                        )}
+
+                        {/*  */}
                     </WinGeneric>
                 )
             })}

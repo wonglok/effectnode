@@ -1,4 +1,3 @@
-import * as React from 'react'
 import { BeginBar } from '../BeginBar/BeginBar'
 import { BeginMenu } from '../BeginBar/BeginMenu'
 import { ThankYouList } from '../BeginBar/ThankYouList'

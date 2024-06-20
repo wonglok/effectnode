@@ -15,13 +15,13 @@ import { createRoot } from 'react-dom/client'
 import '../style/global.style.css'
 import { create } from 'zustand'
 import { EditorApp } from '../component/EditorApp/EditorApp'
-
 // thankyouActivated //
 
 export class Editor {
     constructor() {
-        let self = this
         window.React = React
+
+        let self = this
 
         this.cleans = []
         this.works = []
@@ -77,19 +77,19 @@ export class Editor {
             this.cleans.push(fnc)
         }
 
-        this.root = createRoot(this.domElement, {})
-        this.root.render(<EditorApp useStore={this.store} parent={this}></EditorApp>)
-
         this.dispose = () => {
             this.works = []
             this.cleans.forEach((clean) => {
                 clean()
             })
-            this.root.unmount()
+            // this.root.unmount()
             if (this.domElement.parentNode) {
                 this.domElement.parentNode.removeChild(this.domElement)
             }
         }
+
+        this.root = createRoot(this.domElement, {})
+        this.root.render(<EditorApp useStore={this.store} parent={this}></EditorApp>)
     }
 }
 

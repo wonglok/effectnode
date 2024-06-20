@@ -220,7 +220,7 @@ export function WinGeneric({ useStore, idx, win, topBar, children }) {
                     left: `${win.left}px`,
                     width: `${win.width}px`,
                     height: `${win.height + 30}px`,
-                    border: `gray solid 1px`,
+                    // border: `gray solid 1px`,
                     borderTopLeftRadius: '10px',
                     borderTopRightRadius: '10px',
                 }}
@@ -246,11 +246,16 @@ export function WinGeneric({ useStore, idx, win, topBar, children }) {
                         height: `30px`,
                         borderTopLeftRadius: '10px',
                         borderTopRightRadius: '10px',
-                        borderBottom: `gray solid 1px`,
+                        // borderBottom: `gray solid 1px`,
                         backgroundColor: `hsl(200, ${((idx / (wins.length - 1)) * 100).toFixed(0)}%, 80%)`,
                         //
                         // backgroundColor: 'white',
                         //
+
+                        // borderBottom: 'gray solid 1px',
+                        borderTop: 'gray solid 1px',
+                        borderLeft: 'gray solid 1px',
+                        borderRight: 'gray solid 1px',
                     }}
                     onMouseDown={(ev) => {
                         mouseState.isDown = true
@@ -294,13 +299,25 @@ export function WinGeneric({ useStore, idx, win, topBar, children }) {
                     <div></div>
                 </div>
                 <div
-                    className='w-full'
+                    className='w-full relative'
                     style={{
                         userSelect: 'none',
                         height: `${win.height}px`,
+                        backgroundColor: 'white',
+                        borderBottom: 'gray solid 1px',
+                        borderTop: 'gray solid 1px',
+                        borderLeft: 'gray solid 1px',
+                        borderRight: 'gray solid 1px',
+                        borderBottomLeftRadius: '5px',
+                        borderBottomRightRadius: '5px',
                     }}
                 >
                     {children}
+                    {idx < wins.length - 1 && (
+                        <>
+                            <div className='w-full h-full absolute top-0 left-0 bg-gray-500 opacity-10'></div>
+                        </>
+                    )}
                 </div>
                 <div
                     className='w-7 h-7 bg-gray-500 absolute -bottom-3 -right-3 rounded-full hover:opacity-100 opacity-0 duration-300 transition-opacity cursor-se-resize'

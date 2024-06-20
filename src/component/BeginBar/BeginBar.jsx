@@ -1,5 +1,3 @@
-import * as React from 'react'
-import { version } from '../../../package.json'
 import icon from './img/effectnode-icon.svg'
 import { myWins } from '../utils/myApps'
 import { getID } from '../utils/getID'
@@ -82,7 +80,7 @@ export function BeginBar({ useStore }) {
                 </div>
                 <div className='w-44'>
                     <div className='flex flex-col justify-end mr-2'>
-                        <div className='text-right'>v{version}</div>
+                        <div className='text-right'>Yo!</div>
                         <div
                             className='text-right underline cursor-pointer'
                             onClick={() => {

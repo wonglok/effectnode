@@ -1,8 +1,25 @@
 // const TerserPlugin = require("terser-webpack-plugin");
 const { WebpackManifestPlugin } = require('webpack-manifest-plugin')
 const path = require('path')
-// const webpack = require("webpack");
+const webpack = require('webpack')
 
+/*
+npm i --save-dev browserify-fs
+npm i --save-dev browserify-zlib
+npm i --save-dev browserify-shim
+npm i --save-dev path-browserify
+npm i --save-dev stream-browserify
+npm i --save-dev crypto-browserify
+*/
+
+/*
+['fs']: require.resolve('browserify-fs'),
+['zlib']: require.resolve('browserify-zlib'),
+['shim']: require.resolve('browserify-shim'),
+['path']: require.resolve('path-browserify'),
+['stream']: require.resolve('stream-browserify'),
+['crypto']: require.resolve('crypto-browserify'),
+*/
 const webpackConfiguration = {
     entry: {
         index: './src/entry/index.js',
@@ -23,10 +40,27 @@ const webpackConfiguration = {
     },
     resolve: {
         alias: {
+            // ['crypto-browserify']: require.resolve('crypto-browserify'),
+            // ['stream']: require.resolve('stream-browserify'),
+
             ['@']: path.resolve(__dirname, './'),
             ['src']: path.resolve(__dirname, './src'),
             ['components']: path.resolve(__dirname, './components'),
         },
+        fallback: {
+            //     // ['os']: require.resolve('os-browserify/browser'),
+            //     ['querystring']: require.resolve('querystring-es3'),
+            //     ['vm']: require.resolve('vm-browserify'),
+            //     ['http']: require.resolve('http-browserify'),
+            //     ['https']: require.resolve('https-browserify'),
+            //     ['fs']: require.resolve('browserify-fs'),
+            //     ['zlib']: require.resolve('browserify-zlib'),
+            //     ['shim']: require.resolve('browserify-shim'),
+            //     ['path']: require.resolve('path-browserify'),
+            ['stream']: require.resolve('stream-browserify'),
+            //     ['crypto']: require.resolve('crypto-browserify'),
+        },
+
         extensions: ['.js', '.jsx', '.mjs'],
     },
     module: {
@@ -57,11 +91,17 @@ const webpackConfiguration = {
         ],
     },
     plugins: [
+        // new webpack.DefinePlugin({
+        //     process: `${JSON.stringify({
+        //         NODE_ENV: process.env.NODE_ENV,
+        //         platform: process.platform,
+        //     })}`,
+        // }),
         new WebpackManifestPlugin({
             map: (file) => {
                 file.name = file.name.replace('.js', '')
                 file.path = file.path.replace('auto/', './')
-                console.log('file', file)
+                // console.log('file', file)
                 return file
             },
         }),
@@ -99,4 +139,6 @@ webpackConfiguration.module.rules.push({
     use: ['raw-loader', 'glslify-loader'],
 })
 
-module.exports = webpackConfiguration
+module.exports = () => {
+    return webpackConfiguration
+}
