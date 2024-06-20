@@ -1,12 +1,16 @@
-// import { createBuilder } from '@/src/encoder/createBuilder'
+import { createBuilder } from '@/src/encoder/createBuilder'
 import { Editor } from './Win/Editor/Editor'
 import { WinGeneric } from './Win/Generic/WinGeneric'
 import { Preview } from './Win/Preview/Preview'
+import { useEffect } from 'react'
 
 export function AppWindows({ useStore }) {
     // let apps = useStore((r) => r.apps)
     let wins = useStore((r) => r.wins)
 
+    useEffect(() => {
+        createBuilder()
+    }, [])
     return (
         <>
             {wins.map((win, idx) => {
@@ -20,20 +24,24 @@ export function AppWindows({ useStore }) {
                     >
                         {win.type === 'editor' && (
                             <>
-                                <Editor></Editor>
+                                <Editor useStore={useStore}></Editor>
                             </>
                         )}
 
                         {win.type === 'preview' && (
                             <>
-                                <Preview></Preview>
+                                <Preview useStore={useStore}></Preview>
                             </>
                         )}
-
-                        {/*  */}
                     </WinGeneric>
                 )
             })}
         </>
     )
 }
+
+//
+
+//
+
+//

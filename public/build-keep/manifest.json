@@ -1,5 +1,10 @@
 {
   "index": "./index.min.js",
   "runner": "./runner.min.js",
-  "editor": "./editor.min.js"
+  "editor": "./editor.min.js",
+  "node_modules_process_browser_js.min": "./node_modules_process_browser_js.min.js",
+  "_4f7e-_ed1b-_d17e.min": "./_4f7e-_ed1b-_d17e.min.js",
+  "vendors-node_modules_npm-in-browser_dist_main_js.min": "./vendors-node_modules_npm-in-browser_dist_main_js.min.js",
+  "vendors-node_modules_rollup_dist_es_rollup_browser_js.min": "./vendors-node_modules_rollup_dist_es_rollup_browser_js.min.js",
+  "vendors-node_modules_memfs_lib_index_js.min": "./vendors-node_modules_memfs_lib_index_js.min.js"
 }

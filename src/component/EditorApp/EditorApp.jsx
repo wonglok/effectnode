@@ -33,8 +33,6 @@ export function EditorApp({ useStore }) {
 
 //
 
-//
-
-//
+// Edge Version Advantage
 
 //

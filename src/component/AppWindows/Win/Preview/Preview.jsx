@@ -1,3 +1,3 @@
-export function Preview() {
+export function Preview({ useStore }) {
     return <>Preview</>
 }
