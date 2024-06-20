@@ -1,5 +1,5 @@
 import Lottie from 'lottie-react'
-import blow from 'src/component/BeginBar/lottie/confetti.json'
+import blow from 'src/EffectnodeGUI/BeginBar/lottie/confetti.json'
 
 export function ThankYouList({ useStore }) {
     let overlayPop = useStore((r) => r.overlayPop)

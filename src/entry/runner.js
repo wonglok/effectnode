@@ -2,7 +2,7 @@
 import { createRoot } from 'react-dom/client'
 import '../style/global.style.css'
 import { create } from 'zustand'
-import { EditorApp } from '../component/EditorApp/EditorApp'
+import { EditorApp } from '../EffectnodeGUI/EditorApp/EditorApp'
 /** @license
  * MIT License
  * @description

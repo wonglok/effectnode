@@ -14,7 +14,7 @@ import * as React from 'react'
 import { createRoot } from 'react-dom/client'
 import '../style/global.style.css'
 import { create } from 'zustand'
-import { EditorApp } from '../component/EditorApp/EditorApp'
+import { EditorApp } from '../EffectnodeGUI/EditorApp/EditorApp'
 // thankyouActivated //
 
 export class Editor {
